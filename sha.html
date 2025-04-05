@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Para mi Reyna 💖</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to top right, #ffe6e6, #ffcccc);
+      color: #333;
+      text-align: center;
+      padding: 2em;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 2em;
+      margin-bottom: 0.5em;
+    }
+
+    p {
+      font-size: 1.2em;
+      margin-bottom: 1em;
+    }
+
+    button {
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      padding: 1em 2em;
+      border-radius: 20px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #ff85c1;
+    }
+
+    .heart {
+      position: absolute;
+      color: #ff69b4;
+      animation: float 4s linear infinite;
+      font-size: 24px;
+      opacity: 0.7;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Hola mi Reyna Sha 🥰</h1>
+  <p>¿Sabías que eres lo mejor que me ha pasado?</p>
+  <button onclick="mostrarFrase()">Haz clic aquí ❤️</button>
+  <p id="frase" style="margin-top: 2em; font-weight: bold;"></p>
+
+  <!-- FOTO DE USTEDES -->
+  <div style="margin-top: 2em;">
+    <video controls style="max-width: 90%; border-radius: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+      <source src="nosotros.mp4" type="video/mp4">
+      Tu navegador no soporta la reproducción de video.
+    </video>
+  </div>
+  <script>
+    const frases = [      
+      "Espero que hoy te haya ido Genial Mi Amor", 
+      "Si fueras un error de sistema, no querría reiniciar nunca 😏",     
+      "Te pienso más veces que los bugs que he tenido en código 🧠❤️",
+      "Contigo, hasta un lunes se siente como viernes 😍"
+    ];
+
+    let indice = 0;
+
+    function mostrarFrase() {
+      const fraseElemento = document.getElementById('frase');
+      fraseElemento.textContent = frases[indice];
+      indice = (indice + 1) % frases.length;
+    }
+
+    function crearCorazones() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.textContent = "❤️";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.top = "100vh";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 4000);
+    }
+
+    setInterval(crearCorazones, 500);
+  </script>
+
+</body>
+</html>
